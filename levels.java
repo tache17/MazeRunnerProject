@@ -1,3 +1,5 @@
-public class levels {
+import javax.swing.*;
+
+public class levels extends JPanel{
     
 }
