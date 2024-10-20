@@ -131,6 +131,9 @@ public class Leaderboard {
 
 
     public static void newEntry(String name, int time) {
+        if(entries.isEmpty()){
+            entries.add(new Entry(1, name, time));
+        }
         for(int i = 0; i < entries.size(); i++) {
             if(entries.get(i).name.equals(name)) {
                 if (entries.get(i).time <= time) {
