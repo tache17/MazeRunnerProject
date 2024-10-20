@@ -1,4 +1,12 @@
-1 Vasco 312
-2 Mate 491
+Rank Name Time
+1 Vasco 301
+2 Mate 302
 3 Someone 571
 4 lastOne 761
+5 realLastOne 1081
+6 firstOne 1200
+7 seventhOne 1201
+8 hellyeah 1500
+9 someoneAgain 1701
+10 notSomeone 1702
+

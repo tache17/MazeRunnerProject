@@ -42,7 +42,7 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener{
     }
 
     public void actionPerformed(ActionEvent e){
-        new Finish(379);
+        new Leaderboard.myGUI();
         frame.dispose();
     }
 
