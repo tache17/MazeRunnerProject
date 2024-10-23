@@ -18,9 +18,9 @@ public class MazeRunnerGame implements MouseListener, ActionListener {
         // Initiate components
         JFrame frame = new JFrame("MazeRunner");
         frame.setLayout(new GridLayout(1, 3));
-        JPanel first = new JPanel();
-        JPanel second = new JPanel();
-        JPanel third = new JPanel();
+        JPanel first = new level(100);
+        JPanel second = new level(100);
+        JPanel third = new level(100);
 
         frame.add(first);
         frame.add(second);
