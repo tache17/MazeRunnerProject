@@ -1,78 +1,100 @@
 import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.Random;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import javax.swing.*;
 
-public class level extends JPanel implements MouseMotionListener {
-    private ArrayList<int[]> blocks;  // Store [x, y, width, height] for each block
-    private ArrayList<Color> blockColors;
-    private int numBlocks;  // Number of blocks to generate
-    private Random random;
+public class level extends JPanel {
 
-    // Constructor that allows setting the number of blocks
-    public level(int numBlocks) {
-        this.numBlocks = numBlocks;
-        this.blocks = new ArrayList<>();
-        this.blockColors = new ArrayList<>();
-        this.random = new Random();
-        this.setPreferredSize(new Dimension(800, 600));
-        this.setBackground(Color.WHITE);
-        this.addMouseMotionListener(this);
+    // create variables and colours for ease of use
+    private int rows;
+    private int cols;  
+    private Color base = Color.YELLOW; 
+    private Color hover = Color.RED;   
 
-        // Generate random blocks
-        generateBlocks();
+    // constructor to make and display grid
+    public level(int rows, int cols) {
+        this.rows = rows;
+        this.cols = cols;
+    
+
+        setLayout(new GridLayout(rows, cols));
+
+        
+        genBlocks();
     }
 
-    // Method to generate random blocks
-    private void generateBlocks() {
-        for (int i = 0; i < numBlocks; i++) {
-            int width = random.nextInt(50) + 50;
-            int height = random.nextInt(50) + 50;
-            int x = random.nextInt(700);
-            int y = random.nextInt(500);
-            blocks.add(new int[]{x, y, width, height});  // Store block as an int[] array
-            blockColors.add(Color.BLUE);  // Initially all blocks are blue
-        }
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        // Draw all blocks
-        for (int i = 0; i < blocks.size(); i++) {
-            int[] block = blocks.get(i);
-            g.setColor(blockColors.get(i));
-            g.fillRect(block[0], block[1], block[2], block[3]);  // Use fillRect for custom rectangle
-        }
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        int mouseX = e.getX();
-        int mouseY = e.getY();
-
-        // Check if the mouse is hovering over any block
-        for (int i = 0; i < blocks.size(); i++) {
-            int[] block = blocks.get(i);
-            if (isMouseOverBlock(mouseX, mouseY, block)) {
-                blockColors.set(i, Color.RED);  // Change block color to red if hovered
-            } else {
-                blockColors.set(i, Color.BLUE);  // Revert block color to blue if not hovered
+    //read text file for level designs
+    private static String textReader(){
+        try {
+            File file = new File("levels.txt");
+            Scanner scanner = new Scanner(file);
+            String text = "";
+            
+            while (scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                text += line;
             }
+            scanner.close();
+            return text;
+        } catch (FileNotFoundException e) {
+            System.out.println("File not fund :" + e.getMessage());
+            return null;
         }
-        repaint();  // Repaint the panel to reflect the color changes
+        
+    } 
+
+    // generate blocks
+    private void genBlocks() {
+        String text = textReader();
+
+        for (int i = 0; i < rows * cols; i++) {
+            // make JPanel for each block
+            JPanel block = new JPanel();
+            block.setBackground(base);
+
+            // adds mouse hover effect 
+            block.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    if(Character.toString(text.charAt(i)).equals("x")) {
+                        block.setBackground(Color.BLACK);
+                    }
+                    else {
+                        block.setBackground(hover);
+                    }
+                      
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    block.setBackground(base);  // Revert to original color
+                }
+            });
+
+            // Add the block (JPanel) to the GridLayout
+            add(block);
+        }
     }
 
-    // Helper method to check if the mouse is over a block
-    private boolean isMouseOverBlock(int mouseX, int mouseY, int[] block) {
-        return mouseX >= block[0] && mouseX <= (block[0] + block[2])
-            && mouseY >= block[1] && mouseY <= (block[1] + block[3]);
+    // Getter for rows
+    public int getRows() {
+        return rows;
     }
 
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        // We don't need to handle dragging for this case
+    // Getter for columns
+    public int getCols() {
+        return cols;
+    }
+
+    // Setters for default and hover colors if customization is needed
+    public void setDefaultColor(Color defaultColor) {
+        this.base = defaultColor;
+    }
+
+    public void setHoverColor(Color hoverColor) {
+        this.hover = hoverColor;
     }
 }

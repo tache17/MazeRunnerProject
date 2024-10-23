@@ -15,7 +15,7 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener{
 
     MainMenu(){
         // Frame, Panel, Button and Label SET UP
-        ImageIcon icon = new ImageIcon("MazeRunnerProject\\MazeRunnerLogo.png");
+        ImageIcon icon = new ImageIcon("MazeRunnerLogo.png");
         frame = new JFrame("Main Menu");
         label = new JLabel(icon);
         frame.add(this);
