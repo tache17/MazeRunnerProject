@@ -59,6 +59,7 @@ public class level extends JPanel {
             JLabel label = new JLabel(Character.toString(text.charAt(index))); //label for testing
             label.setForeground(Color.WHITE);
             block.add(label, BorderLayout.CENTER);
+
             // adds mouse hover effect 
             block.addMouseListener(new MouseAdapter() {
                 @Override
