@@ -46,20 +46,24 @@ public class level extends JPanel {
         
     } 
 
-    // generate blocks
+    // generate blocks for the frame
     private void genBlocks() {
         String text = textReader();
 
         for (int i = 0; i < rows * cols; i++) {
             // make JPanel for each block
             JPanel block = new JPanel();
+            int index = i;
             block.setBackground(base);
 
+            JLabel label = new JLabel(Character.toString(text.charAt(index))); //label for testing
+            label.setForeground(Color.WHITE);
+            block.add(label, BorderLayout.CENTER);
             // adds mouse hover effect 
             block.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    if(Character.toString(text.charAt(i)).equals("x")) {
+                    if(Character.toString(text.charAt(index)).equals("x")) {
                         block.setBackground(Color.BLACK);
                     }
                     else {
