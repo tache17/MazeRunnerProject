@@ -21,9 +21,9 @@ public class MazeRunnerGame implements MouseListener, ActionListener {
         frame.setLayout(new GridLayout(1, 5));
 
         //JPanel intro = new JPanel();
-        JPanel first = new level(15,10);
-        JPanel second = new level(15,10);
-        JPanel third = new level(15,10);
+        JPanel first = new level(15,10,1);
+        JPanel second = new level(15,10,2);
+        JPanel third = new level(15,10,3);
         //JPanel end = new JPanel();
 
         //frame.add(intro);
@@ -56,7 +56,7 @@ public class MazeRunnerGame implements MouseListener, ActionListener {
         frame.setSize(1500, 1000);
         frame.setVisible(true);
     }
-
+    
     public void actionPerformed(ActionEvent e){
         new MazeRunnerGame();
 
