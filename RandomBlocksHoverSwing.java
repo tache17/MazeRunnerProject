@@ -1,8 +1,8 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.*;
 
 public class RandomBlocksHoverSwing extends JPanel implements MouseMotionListener {
     private ArrayList<Rectangle> blocks;
