@@ -6,7 +6,7 @@ import java.awt.event.MouseListener;
 import javax.swing.*;
 
 
-public class MainMenu extends JPanel implements ActionListener, MouseListener{
+public class MainMenu extends level implements ActionListener, MouseListener{
     private JFrame frame;
     private JButton startButton;
     private JLabel label;
@@ -44,7 +44,7 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener{
 
 
     public void actionPerformed(ActionEvent e){
-        new Leaderboard.myGUI();
+        new MazeRunnerGame();
         frame.dispose();
     }
 
