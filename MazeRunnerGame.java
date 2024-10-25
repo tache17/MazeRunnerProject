@@ -8,10 +8,10 @@ import javax.swing.*;
 
 
 public class MazeRunnerGame implements MouseListener, ActionListener {
-    JFrame frame;
-    JPanel first;
-    JPanel second;
-    JPanel third;
+    private JFrame frame;
+    private JPanel first;
+    private JPanel second;
+    private JPanel third;
 
 
 

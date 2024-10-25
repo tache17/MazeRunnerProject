@@ -7,15 +7,15 @@ import javax.swing.*;
 
 
 public class MainMenu extends JPanel implements ActionListener, MouseListener{
-    JFrame frame;
-    JButton startButton;
-    JLabel label;
+    private JFrame frame;
+    private JButton startButton;
+    private JLabel label;
     GridBagConstraints gbc = new GridBagConstraints();
 
 
     MainMenu(){
         // Frame, Panel, Button and Label SET UP
-        ImageIcon icon = new ImageIcon("MazeRunnerLogo.png");
+        ImageIcon icon = new ImageIcon("MazeRunnerProject/MazeRunnerLogo.png");
         frame = new JFrame("Main Menu");
         label = new JLabel(icon);
         frame.add(this);
@@ -44,11 +44,8 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener{
 
 
     public void actionPerformed(ActionEvent e){
-
-        new MazeRunnerGame();
+        new Leaderboard.myGUI();
         frame.dispose();
-
-
     }
 
     public void mouseClicked(MouseEvent e){
