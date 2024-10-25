@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import javax.swing.*;
 
 
+
 public class MazeRunnerGame implements MouseListener, ActionListener {
     private JFrame frame;
     private JPanel first;
@@ -17,14 +18,19 @@ public class MazeRunnerGame implements MouseListener, ActionListener {
     MazeRunnerGame(){
         // Initiate components
         JFrame frame = new JFrame("MazeRunner");
-        frame.setLayout(new GridLayout(1, 3));
-        level first = new level(50);
-        level second = new level(60);
-        level third = new level(70);
+        frame.setLayout(new GridLayout(1, 5));
 
+        //JPanel intro = new JPanel();
+        JPanel first = new level(15,10,1);
+        JPanel second = new level(15,10,2);
+        JPanel third = new level(15,10,3);
+
+
+        //frame.add(intro);
         frame.add(first);
         frame.add(second);
         frame.add(third);
+        //frame.add(end);
 
 
 
@@ -34,18 +40,26 @@ public class MazeRunnerGame implements MouseListener, ActionListener {
 
         // Design
 
+        first.setBackground(Color.BLACK);
+        second.setBackground(Color.BLACK);       
+        third.setBackground(Color.BLACK);
 
+
+        //frame.add(intro);
         frame.add(first);
-
         frame.add(second);
         frame.add(third);
+        //frame.add(end);
+
 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1600, 600);
+
+        frame.setSize(1500, 1000);
+
         frame.setVisible(true);
     }
-
+    
     public void actionPerformed(ActionEvent e){
         new MazeRunnerGame();
 

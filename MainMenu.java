@@ -40,6 +40,8 @@ public class MainMenu extends level implements ActionListener, MouseListener{
         frame.setVisible(true);
 
     }
+    
+
 
     public void actionPerformed(ActionEvent e){
         new MazeRunnerGame();
