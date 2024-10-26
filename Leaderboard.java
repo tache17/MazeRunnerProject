@@ -158,6 +158,7 @@ public class Leaderboard {
     }
 
     private static File getFile() {
+        // It's possible that the file location could cause issues as different VSCodes manage file locations differently.
         return new File("MazeRunnerProject/leaderboard.txt");
     }
 

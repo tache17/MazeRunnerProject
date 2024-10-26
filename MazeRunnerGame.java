@@ -9,9 +9,8 @@ import javax.swing.*;
 
 public class MazeRunnerGame implements MouseListener, ActionListener {
     private JFrame frame;
-    private JPanel first;
-    private JPanel second;
-    private JPanel third;
+    private level first, second, third;
+
 
 
 
@@ -21,19 +20,9 @@ public class MazeRunnerGame implements MouseListener, ActionListener {
         frame.setLayout(new GridLayout(1, 5));
 
         //JPanel intro = new JPanel();
-        JPanel first = new level(15,10,1);
-        JPanel second = new level(15,10,2);
-        JPanel third = new level(15,10,3);
-
-
-        //frame.add(intro);
-        frame.add(first);
-        frame.add(second);
-        frame.add(third);
-        //frame.add(end);
-
-
-
+        first = new level(15,10,1);
+        second = new level(15,10,2);
+        third = new level(15,10,3);
 
 
 
@@ -61,7 +50,6 @@ public class MazeRunnerGame implements MouseListener, ActionListener {
     }
     
     public void actionPerformed(ActionEvent e){
-        new MazeRunnerGame();
 
     }
 
