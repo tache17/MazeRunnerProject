@@ -32,6 +32,8 @@ public class level extends JPanel {
     private static String[] textReader(){
         try {
             //import file and split into array for diff levels
+            // It's possible that the file location could cause issues as different VSCodes manage file locations differently.
+
             File file = new File("levels.txt");
             Scanner scanner = new Scanner(file);
             String text = "";

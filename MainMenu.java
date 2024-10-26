@@ -6,32 +6,42 @@ import java.awt.event.MouseListener;
 import javax.swing.*;
 
 
-public class MainMenu extends level implements ActionListener, MouseListener{
+public class MainMenu extends JPanel implements ActionListener, MouseListener{
+    // Initializing variables
     private JFrame frame;
     private JButton startButton;
     private JLabel label;
+    private JButton leaderButton;
     GridBagConstraints gbc = new GridBagConstraints();
 
 
     MainMenu(){
-        // Frame, Panel, Button and Label SET UP
+        // Setting up an icon image for the main menu, plus setting up teh frame, label and the start/leaderboard button.
+        // It's possible that the file location could cause issues as different VSCodes manage file locations differently.
         ImageIcon icon = new ImageIcon("MazeRunnerProject/MazeRunnerLogo.png");
         frame = new JFrame("Main Menu");
         label = new JLabel(icon);
         frame.add(this);
-        startButton = new JButton("Start!");
+        startButton = new JButton("Start");
+        leaderButton = new JButton("Leaderboard");
 
-        // Designing
+        // Designing layout, using gridbagconstraints for layout.
         setBackground(Color.GRAY);
         setLayout(new GridBagLayout());
         startButton.addActionListener(this);
         startButton.addMouseListener(this);
         startButton.setFocusable(false);
-        startButton.setPreferredSize(new Dimension(100, 100));
-        gbc.gridx = 2;
+        startButton.setPreferredSize(new Dimension(200, 200));
+        leaderButton.addActionListener(this);
+        leaderButton.addMouseListener(this);
+        leaderButton.setFocusable(false);
+        leaderButton.setPreferredSize(new Dimension(200, 200));
+        gbc.gridx = 1;
         gbc.gridy = 1;
         this.add(startButton, gbc);
-        gbc.gridx = 1;
+        gbc.gridx = 4;
+        this.add(leaderButton, gbc);
+        gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
         this.add(label, gbc);
@@ -44,8 +54,14 @@ public class MainMenu extends level implements ActionListener, MouseListener{
 
 
     public void actionPerformed(ActionEvent e){
-        new MazeRunnerGame();
-        frame.dispose();
+        // Checking which button was clicked to go to Leaderboard or Start the game.
+        if(e.getSource().equals(startButton)){
+            new MazeRunnerGame();
+            frame.dispose();
+        } else if(e.getSource().equals(leaderButton)){
+            new Leaderboard.myGUI();
+            frame.dispose();
+        }
     }
 
     public void mouseClicked(MouseEvent e){
@@ -61,11 +77,21 @@ public class MainMenu extends level implements ActionListener, MouseListener{
     }
 
     public void mouseEntered(MouseEvent e){
-        startButton.setBackground(Color.YELLOW);
+        
+        if(e.getSource().equals(startButton)){
+            startButton.setBackground(Color.YELLOW);
+        } else if(e.getSource().equals(leaderButton)){
+            leaderButton.setBackground(Color.YELLOW);
+        }
+
     }
 
     public void mouseExited(MouseEvent e){
-        startButton.setBackground(Color.WHITE);
+        if(e.getSource().equals(startButton)){
+            startButton.setBackground(Color.WHITE);
+        } else if(e.getSource().equals(leaderButton)){
+            leaderButton.setBackground(Color.WHITE);
+        }
     }
 
     public static void main(String[] args){
